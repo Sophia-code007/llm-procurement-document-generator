@@ -1,109 +1,168 @@
-# 项目技术规范
+# 采购文件智能生成系统
 
-## 技术栈
+## 一、项目简介
 
-- 前端: React 19 + TypeScript
-- 样式: Tailwind CSS v4
-- UI 组件: shadcn/ui `import { Button } from "@/components/ui/button";`
-- 图标: lucide-react `import { SearchIcon } from "lucide-react";`
-- 图表: echarts-for-react `import ReactECharts from "echarts-for-react";`
-- 动画: framer-motion `import { motion } from "framer-motion";`
-- 路由: react-router-dom `import { Link, useNavigate } from "react-router-dom";`
+本项目面向采购文件编制场景，开发一套基于大语言模型（LLM）、自然语言处理（NLP）和动态模板引擎的采购文件智能生成系统。
 
----
+系统支持用户输入自然语言采购需求，自动提取采购类别、数量、预算、技术要求、交付期限等关键参数，并根据采购类型匹配对应模板，生成采购文件。同时提供合同条款风险预审能力，辅助识别潜在风险和缺失条款。
 
-## 目录结构
+## 二、项目目标
 
-```
-src/
-├── index.tsx            # 入口（勿修改）
-├── app.tsx              # 路由配置（仅在 <Routes> 内增删 <Route>）
-├── index.css            # 全局样式 + 主题变量
-├── components/          # 基础 UI 组件（禁止存放业务组件）
-│   ├── layout.tsx       # 全局布局容器（含 <Outlet />）
-│   └── ui/              # shadcn/ui 内置组件（勿修改）
-├── pages/               # 页面模块（每个页面一个目录）
-│   ├── <PageName>/      # 页面目录示例
-│   │   ├── PageName.tsx        # 页面入口文件与目录同名
-│   │   └── components/         # 页面专属组件
-│   └── NotFoundPage/
-│       └── NotFoundPage.tsx
-├── hooks/               # 自定义 Hooks
-└── lib/                 # 工具函数（cn() 等）
+传统采购文件编制主要依赖人工完成，存在编制周期长、格式不统一、条款漏项和合规风险等问题。
 
-shared/
-└── static/              # 静态资源
-    ├── data/            # 数据文件（JSON）
-    └── images/          # 图片资源
-```
+本项目主要目标：
 
----
+- 实现采购需求的智能解析
+- 实现采购参数结构化提取
+- 实现采购文件动态生成
+- 实现合同条款风险预审
+- 提高采购文件编制效率
+- 提升采购文件标准化程度
 
-## 模板初始状态
+## 三、核心功能
 
-- `app.tsx` 首页路由指向平台内置的 `<Welcome />` 组件
-- 开发时需将 `index` 路由替换为业务首页，并在 `pages/` 下创建对应页面目录
-- `layout.tsx` 为空壳容器（仅 `<Outlet />`），需根据需求实现导航和布局
+### 1. 采购需求智能解析
 
----
+用户输入自然语言采购需求，例如：
 
-## 禁止修改的文件
+> 采购100台服务器，预算50万元，要求Intel处理器，30天内完成交付，质保3年。
 
-| 文件 | 原因 |
-|------|------|
-| `src/index.tsx` | Provider 层级 + 样式引入，由模板管理 |
-| `src/components/ui/*` | shadcn/ui 内置组件，版本锁定 |
+系统通过大语言模型自动提取：
 
----
+- 采购类别
+- 数量
+- 单位
+- 预算
+- 技术要求
+- 交付期限
+- 质保期限
+- 供应商资格要求
 
-## 文件放置规则
+### 2. 动态采购文件生成
 
-| 内容类型 | 放置位置 |
-|---------|---------|
-| 新页面 | `src/pages/<PageName>/PageName.tsx` |
-| 页面专属组件 | `src/pages/<PageName>/components/` |
-| 自定义 Hooks | `src/hooks/` |
-| 工具函数 | `src/lib/` |
-| 静态数据文件 | `shared/static/data/` |
-| 静态图片 | `shared/static/images/` |
+根据采购类型和结构化参数：
 
----
+1. 自动匹配采购文件模板
+2. 自动选择对应章节
+3. 自动填充采购参数
+4. 生成完整采购文件
 
-## 导入路径
+### 3. 条款风险预审
 
-```typescript
-// @/ 别名 → src/
-import { cn } from "@/lib/utils";
-import { useIsMobile } from "@/hooks/use-mobile";
+系统对采购文件和合同条款进行风险检查，包括：
 
-// @shared/ 别名 → shared/
-import heroImage from "@shared/static/images/hero.png";
-import configData from "@shared/static/config.json";
-```
+- 验收条款缺失
+- 付款风险
+- 违约责任缺失
+- 交付期限不明确
+- 质保责任缺失
+- 单方解释权风险
+- 知识产权风险
+- 数据安全风险
+- 法规引用风险
 
----
+系统输出：
 
-## 路由配置
+- 风险类型
+- 风险等级
+- 风险原因
+- 修改建议
 
-- 新增页面需在 `src/app.tsx` 的 `<Routes>` 内注册 `<Route>`
-- `BrowserRouter` 已在 `index.tsx` 中配置，`app.tsx` 中**禁止**再包裹 Router
+### 4. 文件预览与导出
 
----
+支持：
 
-## 主题变量
+- 在线预览采购文件
+- 修改文件内容
+- 导出 Word 文件
+- 导出 PDF 文件
 
-主题色定义在 `src/index.css`，通过 `:root` CSS 变量 + `@theme inline` 注册到 Tailwind。
+## 四、技术架构
 
-| 用途 | Tailwind 类 | CSS 变量 |
-|------|------------|----------|
-| 页面背景 | `bg-background` | `--background` |
-| 主文本 | `text-foreground` | `--foreground` |
-| 卡片背景 | `bg-card` | `--card` |
-| 次要文本 | `text-muted-foreground` | `--muted-foreground` |
-| 主色 | `bg-primary` / `text-primary` | `--primary` |
-| 强调色 | `bg-accent` | `--accent` |
-| 边框 | `border-border` | `--border` |
-| 危险色 | `text-destructive` | `--destructive` |
-| 图表色 | `bg-chart-1` ~ `bg-chart-5` | `--chart-1` ~ `--chart-5` |
+### 前端
 
-HSL 格式使用**空格分隔**：`--primary: hsl(150 60% 40%);`
+- Vue
+- TypeScript
+- Vite
+- UI 组件库
+
+### 后端
+
+- Python
+- FastAPI
+- RESTful API
+
+### AI 能力
+
+- 大语言模型 API
+- Prompt Engineering
+- Few-shot Learning
+- Structured Output
+
+### 数据与规则
+
+- 采购需求语义解析数据集
+- 采购文件模板库
+- 风险规则库
+- 风险条款测试集
+
+## 五、系统业务流程
+
+用户输入采购需求
+
+↓
+
+前端提交采购需求
+
+↓
+
+后端调用大语言模型
+
+↓
+
+采购需求结构化解析
+
+↓
+
+用户确认或修改采购参数
+
+↓
+
+动态模板匹配
+
+↓
+
+采购文件生成
+
+↓
+
+条款风险预审
+
+↓
+
+在线编辑
+
+↓
+
+Word / PDF 导出
+
+## 六、项目目录结构
+
+```text
+llm-procurement-document-generator/
+│
+├── frontend/              # 前端项目
+│
+├── backend/               # 后端服务
+│
+├── ai/                    # AI Prompt、Schema 等
+│
+├── dataset/               # 项目数据集
+│
+├── templates/             # 采购文件模板
+│
+├── docs/                  # 项目文档
+│
+├── .gitignore
+│
+└── README.md              # 项目总说明

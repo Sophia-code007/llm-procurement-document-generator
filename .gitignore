@@ -62,3 +62,50 @@ pnpm-lock.yaml
 
 # Agent files
 .agent/
+
+# ==========================================
+# Python / FastAPI Backend
+# ==========================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python test/cache files
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================
+# Environment variables and secrets
+# ==========================================
+
+.env
+.env.*
+!.env.example
+
+# API keys and secrets
+*.pem
+*.key
+
+# ==========================================
+# Generated files
+# ==========================================
+
+generated/
+outputs/
+exports/
+
+# ==========================================
+# Database files
+# ==========================================
+
+*.db
+*.sqlite
+*.sqlite3
