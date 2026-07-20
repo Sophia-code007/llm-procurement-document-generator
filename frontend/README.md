@@ -1,109 +1,168 @@
-# 项目技术规范
+# 采购文件智能生成系统 (Vue3 + Element Plus)
+
+基于 Vue3 + Element Plus + Pinia + Vite 构建的采购文件智能生成前端系统。
+
+## 功能特性
+
+- 📋 **三类模板**：工程类、货物类、服务类标准化模板
+- ✍️ **双录入方式**：自然语言AI录入 + 表单逐项填写
+- 🤖 **AI智能解析**：自动识别采购需求中的关键字段
+- 📝 **动态表单**：根据模板类型自动渲染对应字段分组
+- 💾 **草稿自动保存**：localStorage 本地存储，防止数据丢失
+- 📊 **填写进度**：实时计算已填字段百分比
+- 📄 **文档预览**：生成前可预览招标文件内容
+- 🎨 **现代化UI**：Element Plus 组件库，专业商务风格
 
 ## 技术栈
 
-- 前端: React 19 + TypeScript
-- 样式: Tailwind CSS v4
-- UI 组件: shadcn/ui `import { Button } from "@/components/ui/button";`
-- 图标: lucide-react `import { SearchIcon } from "lucide-react";`
-- 图表: echarts-for-react `import ReactECharts from "echarts-for-react";`
-- 动画: framer-motion `import { motion } from "framer-motion";`
-- 路由: react-router-dom `import { Link, useNavigate } from "react-router-dom";`
+- **框架**: Vue 3 (Composition API + <script setup>)
+- **UI库**: Element Plus
+- **状态管理**: Pinia
+- **路由**: Vue Router 4
+- **构建工具**: Vite
+- **HTTP**: Axios
+- **图标**: @element-plus/icons-vue
 
----
-
-## 目录结构
+## 项目结构
 
 ```
-src/
-├── index.tsx            # 入口（勿修改）
-├── app.tsx              # 路由配置（仅在 <Routes> 内增删 <Route>）
-├── index.css            # 全局样式 + 主题变量
-├── components/          # 基础 UI 组件（禁止存放业务组件）
-│   ├── layout.tsx       # 全局布局容器（含 <Outlet />）
-│   └── ui/              # shadcn/ui 内置组件（勿修改）
-├── pages/               # 页面模块（每个页面一个目录）
-│   ├── <PageName>/      # 页面目录示例
-│   │   ├── PageName.tsx        # 页面入口文件与目录同名
-│   │   └── components/         # 页面专属组件
-│   └── NotFoundPage/
-│       └── NotFoundPage.tsx
-├── hooks/               # 自定义 Hooks
-└── lib/                 # 工具函数（cn() 等）
-
-shared/
-└── static/              # 静态资源
-    ├── data/            # 数据文件（JSON）
-    └── images/          # 图片资源
+v3.2-vue/
+├── index.html                 # Vite 入口HTML
+├── package.json               # 项目依赖
+├── vite.config.js             # Vite 配置
+├── README.md                  # 项目说明
+└── src/
+    ├── main.js                # 入口文件
+    ├── App.vue                # 根组件
+    ├── router/
+    │   └── index.js           # 路由配置
+    ├── stores/
+    │   └── tender.js          # Pinia 状态管理
+    ├── config/
+    │   └── templateFields.js  # 三类模板字段配置
+    ├── utils/
+    │   └── aiParse.js         # AI自然语言解析工具
+    ├── api/
+    │   └── tender.js          # API接口封装
+    ├── components/
+    │   ├── Sidebar.vue        # 侧边栏导航
+    │   └── DynamicForm.vue    # 动态表单组件
+    └── views/                 # 页面组件
+        ├── Dashboard.vue          # 工作台
+        ├── TemplateSelect.vue     # 模板选择
+        ├── InputMethodSelect.vue  # 录入方式选择
+        ├── AiInput.vue            # 自然语言录入
+        ├── FieldForm.vue          # 表单填写
+        ├── Generating.vue         # 生成中
+        ├── DocPreview.vue         # 文件预览
+        ├── ContractGen.vue        # 合同生成
+        ├── HistoryReuse.vue       # 历史复用
+        ├── Collaborate.vue        # 协同编辑
+        ├── VersionManage.vue      # 版本管理
+        ├── AiAssist.vue           # AI智能问答
+        ├── Supplier.vue           # 供应商推荐
+        ├── Compliance.vue         # 合规审查
+        ├── Stats.vue              # 统计分析
+        └── Translate.vue          # 多语言支持
 ```
 
----
+## 快速开始
 
-## 模板初始状态
+### 安装依赖
 
-- `app.tsx` 首页路由指向平台内置的 `<Welcome />` 组件
-- 开发时需将 `index` 路由替换为业务首页，并在 `pages/` 下创建对应页面目录
-- `layout.tsx` 为空壳容器（仅 `<Outlet />`），需根据需求实现导航和布局
-
----
-
-## 禁止修改的文件
-
-| 文件 | 原因 |
-|------|------|
-| `src/index.tsx` | Provider 层级 + 样式引入，由模板管理 |
-| `src/components/ui/*` | shadcn/ui 内置组件，版本锁定 |
-
----
-
-## 文件放置规则
-
-| 内容类型 | 放置位置 |
-|---------|---------|
-| 新页面 | `src/pages/<PageName>/PageName.tsx` |
-| 页面专属组件 | `src/pages/<PageName>/components/` |
-| 自定义 Hooks | `src/hooks/` |
-| 工具函数 | `src/lib/` |
-| 静态数据文件 | `shared/static/data/` |
-| 静态图片 | `shared/static/images/` |
-
----
-
-## 导入路径
-
-```typescript
-// @/ 别名 → src/
-import { cn } from "@/lib/utils";
-import { useIsMobile } from "@/hooks/use-mobile";
-
-// @shared/ 别名 → shared/
-import heroImage from "@shared/static/images/hero.png";
-import configData from "@shared/static/config.json";
+```bash
+npm install
 ```
 
----
+### 启动开发服务器
 
-## 路由配置
+```bash
+npm run dev
+```
 
-- 新增页面需在 `src/app.tsx` 的 `<Routes>` 内注册 `<Route>`
-- `BrowserRouter` 已在 `index.tsx` 中配置，`app.tsx` 中**禁止**再包裹 Router
+默认端口: http://localhost:5173
 
----
+### 构建生产版本
 
-## 主题变量
+```bash
+npm run build
+```
 
-主题色定义在 `src/index.css`，通过 `:root` CSS 变量 + `@theme inline` 注册到 Tailwind。
+### 预览生产构建
 
-| 用途 | Tailwind 类 | CSS 变量 |
-|------|------------|----------|
-| 页面背景 | `bg-background` | `--background` |
-| 主文本 | `text-foreground` | `--foreground` |
-| 卡片背景 | `bg-card` | `--card` |
-| 次要文本 | `text-muted-foreground` | `--muted-foreground` |
-| 主色 | `bg-primary` / `text-primary` | `--primary` |
-| 强调色 | `bg-accent` | `--accent` |
-| 边框 | `border-border` | `--border` |
-| 危险色 | `text-destructive` | `--destructive` |
-| 图表色 | `bg-chart-1` ~ `bg-chart-5` | `--chart-1` ~ `--chart-5` |
+```bash
+npm run preview
+```
 
-HSL 格式使用**空格分隔**：`--primary: hsl(150 60% 40%);`
+## 页面流程
+
+```
+工作台 → 模板选择 → 录入方式选择
+                    ├─ 自然语言录入 → (可跳转表单完善)
+                    └─ 表单填写
+                          ↓
+                       生成中
+                          ↓
+                      文件预览 → 下载
+```
+
+## 后端对接
+
+前端 API 请求通过 Vite 代理转发到后端：
+
+- 开发环境: `/api` → `http://localhost:3000/api`
+- 生产环境: 需配置 Nginx 反向代理
+
+后端接口详见 `API对接说明.md`。
+
+## 核心配置
+
+### 模板字段配置
+
+文件: `src/config/templateFields.js`
+
+三类模板（工程/货物/服务）的字段分组配置，支持以下字段类型：
+- `input` - 文本输入
+- `number` - 数字输入
+- `select` - 下拉选择
+- `textarea` - 多行文本
+- `date` - 日期选择
+- `table` - 表格类型（isTable: true）
+
+### 状态管理
+
+使用 Pinia 的 `useTenderStore` 管理全局状态：
+- `currentTemplate` - 当前模板类型
+- `currentInputMethod` - 录入方式
+- `formData` - 表单数据
+- `aiParsedData` - AI解析数据
+- `fillProgress` - 填写进度（计算属性）
+
+### AI解析
+
+本地规则版 AI 解析位于 `src/utils/aiParse.js`，基于正则匹配识别关键字段。
+如需接入真实大模型，可修改 `src/api/tender.js` 中的 `aiParse` 接口。
+
+## 设计规范
+
+- 主色调: #2563eb (蓝色)
+- 成功色: #10b981 (绿色)
+- 警告色: #f59e0b (黄色)
+- 危险色: #ef4444 (红色)
+- 卡片圆角: 12px
+- 侧边栏背景: #1e293b
+- 页面背景: #f1f5f9
+
+## 后续扩展
+
+- [ ] 接入真实大模型API替换本地正则解析
+- [ ] 用户登录/权限系统
+- [ ] 文件存储服务（OSS/MinIO）
+- [ ] 更多模板类型
+- [ ] 在线预览（docx转html/pdf）
+- [ ] 版本对比功能
+- [ ] WebSocket 实时协同编辑
+
+## License
+
+MIT

@@ -1,41 +1,57 @@
-# Dependencies
+# ==============================
+# 全局通用 - 前端 Node 相关
+# ==============================
+# 依赖目录
 node_modules/
 */node_modules/
 
-# Production builds
+# 打包产物
 dist/
 */dist/
 build/
 */build/
 
-# Environment files
+# 环境变量
 .env.local
+.env
+.env.*
+!.env.example
 
-# Logs
+# 日志文件
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 /logs/
 
-# Runtime data
+# 运行缓存
 pids
 *.pid
 *.seed
 *.pid.lock
 
-# Coverage directory used by tools like istanbul
+# 测试覆盖率
 coverage/
 *.lcov
 
-# IDE files
+# 包管理器锁文件（保留package-lock.json，过滤其他）
+yarn.lock
+pnpm-lock.yaml
+
+# 工具缓存
+.eslintcache
+*.tsbuildinfo
+.swc
+
+# ==============================
+# 全局通用 - IDE、系统临时文件
+# ==============================
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -44,68 +60,50 @@ coverage/
 ehthumbs.db
 Thumbs.db
 
-# Temporary folders
 tmp/
 temp/
 .playwright-cli/
 
-# Lock files (keep package-lock.json for consistent installs)
-yarn.lock
-pnpm-lock.yaml
-
-# Cache files
-.eslintcache
-*.tsbuildinfo
-
-# swc wasm
-.swc
-
-# Agent files
-.agent/
-
-# ==========================================
-# Python / FastAPI Backend
-# ==========================================
-
+# ==============================
+# 全局通用 - Python / FastAPI 后端
+# ==============================
+# 字节码缓存
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Python virtual environments
+# 虚拟环境
 venv/
 .venv/
 env/
 ENV/
 
-# Python test/cache files
+# 静态检查/测试缓存
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 
-# ==========================================
-# Environment variables and secrets
-# ==========================================
-
-.env
-.env.*
-!.env.example
-
-# API keys and secrets
+# ==============================
+# 密钥、证书文件（全局屏蔽）
+# ==============================
 *.pem
 *.key
 
-# ==========================================
-# Generated files
-# ==========================================
+# ==============================
+# 项目分层精准过滤（适配你的仓库目录）
+# 只过滤对应文件夹内的产物，不影响其他目录同名文件
+# ==============================
+# 后端专属：数据库、输出文件夹
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
+backend/output/
+backend/outputs/
 
+# 全局生成文件
 generated/
 outputs/
 exports/
 
-# ==========================================
-# Database files
-# ==========================================
-
-*.db
-*.sqlite
-*.sqlite3
+# 项目自定义Agent缓存
+.agent/
