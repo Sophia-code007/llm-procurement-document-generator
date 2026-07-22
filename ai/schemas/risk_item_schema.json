@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "风险检测条目 Schema",
+  "type": "object",
+  "required": ["riskId", "level", "category", "description", "suggestion"],
+  "properties": {
+    "riskId": {
+      "type": "string",
+      "description": "风险唯一编号，如 R001"
+    },
+    "level": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "风险等级：高/中/低"
+    },
+    "category": {
+      "type": "string",
+      "description": "风险分类：金额合规/条款缺失/表述规范/付款风险/验收风险等"
+    },
+    "location": {
+      "type": "string",
+      "description": "风险所在文档位置，如 第三章 投标保证金"
+    },
+    "description": {
+      "type": "string",
+      "description": "风险问题具体描述"
+    },
+    "currentContent": {
+      "type": "string",
+      "description": "当前文档中的原文内容"
+    },
+    "suggestion": {
+      "type": "string",
+      "description": "修改建议"
+    },
+    "regulationBasis": {
+      "type": ["string", "null"],
+      "description": "法规依据，可选"
+    }
+  }
+}
