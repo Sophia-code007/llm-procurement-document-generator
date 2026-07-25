@@ -1,0 +1,424 @@
+{
+  "users": [
+    {
+      "_id": "mruazazgzp9ns",
+      "userName": "admin",
+      "email": "admin",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "company": "????",
+      "department": "",
+      "phone": "",
+      "role": "user",
+      "createdAt": "2026-07-20T08:15:30Z",
+      "updatedAt": "2026-07-20T08:15:30Z"
+    },
+    {
+      "_id": "mrub6k5icg2mr",
+      "userName": "吴敌",
+      "email": "wudi",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "company": "鸡蛋派对",
+      "department": "",
+      "phone": "",
+      "role": "user",
+      "createdAt": "2026-07-20T10:30:45Z",
+      "updatedAt": "2026-07-20T10:30:45Z"
+    }
+  ],
+  "templates": [
+    {
+      "_id": "template1",
+      "name": "标准货物采购模板",
+      "category": "goods",
+      "description": "适用于一般货物类采购，包含基础商务条款和技术参数要求。",
+      "type": "bid",
+      "sections": [
+        "招标公告",
+        "投标人须知",
+        "评标办法",
+        "合同条款",
+        "技术参数",
+        "投标文件格式"
+      ],
+      "content": {
+        "招标公告": "<h1>招标公告</h1><p>根据《中华人民共和国招标投标法》及相关法律法规，现就{projectName}进行公开招标，欢迎符合条件的投标人参加投标。</p><h2>1.1 项目概况</h2><table><tr><td>项目名称</td><td>{projectName}</td></tr><tr><td>招标编号</td><td>{projectCode}</td></tr><tr><td>招标单位</td><td>{bidderName}</td></tr><tr><td>预算金额</td><td>{budget}</td></tr><tr><td>资金来源</td><td>{fundSource}</td></tr></table><h2>1.2 投标人资格要求</h2><p>1. 具有独立法人资格，持有有效的营业执照；</p><p>2. {qualificationRequirements}</p><h2>1.3 招标文件的获取</h2><p>凡有意参加投标者，请于{bidStartDate}至{bidEndDate}期间，登录招标平台下载招标文件。</p>",
+        "投标人须知": "<h1>投标人须知</h1><h2>2.1 投标文件的组成</h2><p>投标文件应包括下列内容：</p><ul><li>投标函及投标函附录</li><li>法定代表人身份证明或授权委托书</li><li>投标保证金</li><li>技术方案</li><li>商务条款响应表</li><li>投标报价表</li></ul><h2>2.2 投标报价</h2><p>投标报价应包含完成本项目所需的全部费用，包括但不限于设备费、运输费、安装调试费、税费等。</p><h2>2.3 投标有效期</h2><p>投标有效期为自投标截止之日起90天。</p>",
+        "评标办法": "<h1>评标办法</h1><h2>3.1 评标方法</h2><p>本次招标采用{evaluationMethod}。</p><h2>3.2 评审标准</h2><p>评审内容包括技术方案、商务条款、投标报价等方面。</p>",
+        "合同条款": "<h1>合同条款</h1><h2>4.1 合同文件组成</h2><p>本合同由下列文件组成：</p><ul><li>合同协议书</li><li>中标通知书</li><li>投标文件</li><li>招标文件</li></ul><h2>4.2 付款方式</h2><p>{paymentTerms}</p>",
+        "技术参数": "<h1>技术参数要求</h1><p>{technicalRequirements}</p>",
+        "投标文件格式": "<h1>投标文件格式</h1><p>投标人应按照本招标文件规定的格式编制投标文件。</p>"
+      }
+    },
+    {
+      "_id": "template2",
+      "name": "工程项目招标模板",
+      "category": "engineering",
+      "description": "适用于工程建设项目招标，包含工程量清单和施工要求。",
+      "type": "bid",
+      "sections": [
+        "招标公告",
+        "投标人须知",
+        "评标办法",
+        "合同条款",
+        "技术规范",
+        "工程量清单",
+        "投标文件格式"
+      ],
+      "content": {
+        "招标公告": "<h1>招标公告</h1><p>根据《中华人民共和国招标投标法》及相关法律法规，现就{projectName}进行公开招标，欢迎符合条件的投标人参加投标。</p><h2>1.1 项目概况</h2><table><tr><td>项目名称</td><td>{projectName}</td></tr><tr><td>招标编号</td><td>{projectCode}</td></tr><tr><td>建设单位</td><td>{bidderName}</td></tr><tr><td>建设地点</td><td>{deliveryLocation}</td></tr><tr><td>预算金额</td><td>{budget}</td></tr><tr><td>资金来源</td><td>{fundSource}</td></tr></table><h2>1.2 投标人资格要求</h2><p>1. 具有独立法人资格，持有有效的营业执照；</p><p>2. 具备相应的工程施工资质；</p><p>3. {qualificationRequirements}</p>",
+        "投标人须知": "<h1>投标人须知</h1><h2>2.1 工期要求</h2><p>计划开工日期：{startDate}</p><p>计划竣工日期：{deliveryDate}</p><p>工期：{projectDuration}</p><h2>2.2 质量要求</h2><p>工程质量标准：{qualityStandard}</p>",
+        "评标办法": "<h1>评标办法</h1><h2>3.1 评标方法</h2><p>本次招标采用{evaluationMethod}。</p>",
+        "合同条款": "<h1>合同条款</h1><h2>4.1 合同价款</h2><p>合同价款为人民币{contractAmount}元。</p><h2>4.2 付款方式</h2><p>{paymentTerms}</p>",
+        "技术规范": "<h1>技术规范</h1><p>{technicalRequirements}</p>",
+        "工程量清单": "<h1>工程量清单</h1><p>详见附件：工程量清单</p>",
+        "投标文件格式": "<h1>投标文件格式</h1><p>投标人应按照本招标文件规定的格式编制投标文件。</p>"
+      }
+    },
+    {
+      "_id": "template3",
+      "name": "服务采购模板",
+      "category": "services",
+      "description": "适用于服务类采购，包含服务质量标准和考核条款。",
+      "type": "bid",
+      "sections": [
+        "招标公告",
+        "投标人须知",
+        "评标办法",
+        "合同条款",
+        "服务标准",
+        "考核办法",
+        "投标文件格式"
+      ],
+      "content": {
+        "招标公告": "<h1>招标公告</h1><p>根据《中华人民共和国招标投标法》及相关法律法规，现就{projectName}进行公开招标，欢迎符合条件的投标人参加投标。</p><h2>1.1 项目概况</h2><table><tr><td>项目名称</td><td>{projectName}</td></tr><tr><td>招标编号</td><td>{projectCode}</td></tr><tr><td>采购单位</td><td>{bidderName}</td></tr><tr><td>服务地点</td><td>{deliveryLocation}</td></tr><tr><td>预算金额</td><td>{budget}</td></tr><tr><td>服务期限</td><td>{servicePeriod}</td></tr></table><h2>1.2 投标人资格要求</h2><p>1. 具有独立法人资格，持有有效的营业执照；</p><p>2. {qualificationRequirements}</p>",
+        "投标人须知": "<h1>投标人须知</h1><h2>2.1 服务内容</h2><p>{serviceContent}</p>",
+        "评标办法": "<h1>评标办法</h1><h2>3.1 评标方法</h2><p>本次招标采用{evaluationMethod}。</p>",
+        "合同条款": "<h1>合同条款</h1><h2>4.1 付款方式</h2><p>{paymentTerms}</p>",
+        "服务标准": "<h1>服务标准</h1><p>{technicalRequirements}</p>",
+        "考核办法": "<h1>考核办法</h1><p>服务考核按照招标文件规定的考核标准执行。</p>",
+        "投标文件格式": "<h1>投标文件格式</h1><p>投标人应按照本招标文件规定的格式编制投标文件。</p>"
+      }
+    },
+    {
+      "_id": "template4",
+      "name": "货物采购合同模板",
+      "category": "goods",
+      "description": "适用于货物类采购合同，包含交付、验收、付款等条款。",
+      "type": "contract",
+      "sections": [
+        "合同主体",
+        "标的及价格",
+        "交付与验收",
+        "付款方式",
+        "质量保证",
+        "违约责任",
+        "争议解决"
+      ],
+      "content": {
+        "合同主体": "<h1>货物采购合同</h1><p>合同编号：{contractCode}</p><h2>甲方（采购单位）</h2><p>名称：{partyA}</p><p>地址：{partyAAddress}</p><p>联系人：{contactPerson}</p><p>电话：{contactPhone}</p><h2>乙方（供应商）</h2><p>名称：{partyB}</p><p>地址：{partyBAddress}</p><p>联系人：{supplierContact}</p><p>电话：{supplierPhone}</p>",
+        "标的及价格": "<h1>标的及价格</h1><table><tr><td>序号</td><td>货物名称</td><td>规格型号</td><td>数量</td><td>单价（元）</td><td>总价（元）</td></tr><tr><td>1</td><td>{goodsName}</td><td>{specification}</td><td>{quantity}</td><td>{unitPrice}</td><td>{totalAmount}</td></tr></table><p>合计：人民币{contractAmount}元（大写：{contractAmountCN}）</p>",
+        "交付与验收": "<h1>交付与验收</h1><h2>3.1 交付时间</h2><p>乙方应于{deliveryDate}前将货物交付至{deliveryLocation}。</p><h2>3.2 验收标准</h2><p>按招标文件规定的技术参数和国家相关标准验收。</p>",
+        "付款方式": "<h1>付款方式</h1><p>{paymentTerms}</p>",
+        "质量保证": "<h1>质量保证</h1><p>乙方提供的货物质量保证期为{warrantyPeriod}，自验收合格之日起计算。</p>",
+        "违约责任": "<h1>违约责任</h1><p>任何一方违反本合同约定，应承担违约责任，并赔偿对方因此造成的损失。</p>",
+        "争议解决": "<h1>争议解决</h1><p>因本合同引起的争议，双方应协商解决；协商不成的，可向{disputeLocation}人民法院提起诉讼。</p>"
+      }
+    },
+    {
+      "_id": "template5",
+      "name": "工程合同模板",
+      "category": "engineering",
+      "description": "适用于工程建设合同，包含工期、变更、结算等条款。",
+      "type": "contract",
+      "sections": [
+        "合同主体",
+        "工程概况",
+        "工期要求",
+        "合同价款",
+        "工程变更",
+        "竣工验收",
+        "违约责任"
+      ],
+      "content": {
+        "合同主体": "<h1>建设工程施工合同</h1><p>合同编号：{contractCode}</p><h2>发包人（甲方）</h2><p>名称：{partyA}</p><p>地址：{partyAAddress}</p><h2>承包人（乙方）</h2><p>名称：{partyB}</p><p>地址：{partyBAddress}</p>",
+        "工程概况": "<h1>工程概况</h1><table><tr><td>工程名称</td><td>{projectName}</td></tr><tr><td>工程地点</td><td>{deliveryLocation}</td></tr><tr><td>工程内容</td><td>{projectContent}</td></tr><tr><td>工程规模</td><td>{projectScale}</td></tr></table>",
+        "工期要求": "<h1>工期要求</h1><p>开工日期：{startDate}</p><p>竣工日期：{deliveryDate}</p><p>工期：{projectDuration}</p>",
+        "合同价款": "<h1>合同价款</h1><p>合同价款为人民币{contractAmount}元（大写：{contractAmountCN}）。</p>",
+        "工程变更": "<h1>工程变更</h1><p>任何工程变更需经发包人同意，并签订补充协议。</p>",
+        "竣工验收": "<h1>竣工验收</h1><p>工程竣工后，承包人应提交竣工验收申请，发包人应在{inspectionDays}日内组织验收。</p>",
+        "违约责任": "<h1>违约责任</h1><p>承包人逾期竣工的，每逾期一天应向发包人支付合同价款{penaltyRate}%的违约金。</p>"
+      }
+    },
+    {
+      "_id": "template6",
+      "name": "服务采购合同模板",
+      "category": "services",
+      "description": "适用于服务类采购合同，包含服务内容、考核标准、保密要求等条款。",
+      "type": "contract",
+      "sections": [
+        "合同主体",
+        "服务内容",
+        "服务期限",
+        "服务标准",
+        "考核与验收",
+        "付款方式",
+        "保密条款",
+        "违约责任"
+      ],
+      "content": {
+        "合同主体": "<h1>服务采购合同</h1><p>合同编号：{contractCode}</p><h2>甲方（采购单位）</h2><p>名称：{partyA}</p><p>地址：{partyAAddress}</p><h2>乙方（服务提供方）</h2><p>名称：{partyB}</p><p>地址：{partyBAddress}</p>",
+        "服务内容": "<h1>服务内容</h1><p>{serviceContent}</p>",
+        "服务期限": "<h1>服务期限</h1><p>自{serviceStartDate}起至{serviceEndDate}止。</p>",
+        "服务标准": "<h1>服务标准</h1><p>{technicalRequirements}</p>",
+        "考核与验收": "<h1>考核与验收</h1><p>甲方每月对乙方服务质量进行考核，考核结果作为付款依据。</p>",
+        "付款方式": "<h1>付款方式</h1><p>{paymentTerms}</p>",
+        "保密条款": "<h1>保密条款</h1><p>乙方应对在服务过程中知悉的甲方商业秘密和个人信息承担保密责任。</p>",
+        "违约责任": "<h1>违约责任</h1><p>乙方服务未达到约定标准的，甲方有权扣减服务费用。</p>"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "_id": "mruemh7zaap7y",
+      "projectName": "鸡蛋政务中心机房运维服务项目",
+      "budget": "80万元",
+      "deliveryDate": "2026-07-16",
+      "contactPerson": "吴敌",
+      "contactPhone": "123456789",
+      "deliveryLocation": "宜昌市西陵区政务大楼",
+      "paymentTerms": "一次性付清",
+      "warrantyPeriod": "3年",
+      "technicalRequirements": "服务器日常巡检、网络设备维护、系统漏洞修复、7*24小时应急响应、每月出具运维报告",
+      "qualificationRequirements": "ISO20000信息技术服务管理体系认证，项目团队不少于5名工程师，其中项目经理需具备PMP证书",
+      "evaluationMethod": "性价比法",
+      "templateId": "template3",
+      "templateName": "服务采购模板",
+      "category": "services",
+      "createdBy": "mrub6k5icg2mr",
+      "createdAt": "2026-07-20T14:22:10Z",
+      "updatedAt": "2026-07-20T14:22:10Z"
+    }
+  ],
+  "documents": [
+    {
+      "_id": "doc1",
+      "title": "2025年度办公设备采购招标文件",
+      "type": "bid",
+      "status": "published",
+      "templateId": "template1",
+      "templateName": "标准货物采购模板",
+      "category": "goods",
+      "data": {
+        "projectName": "2025年度办公设备采购",
+        "projectCode": "CG2025-001",
+        "budget": "50万元",
+        "ceilingPrice": "500000",
+        "bidderName": "XX单位",
+        "contactPerson": "张经理",
+        "contactPhone": "13800138000",
+        "deliveryDate": "2025-08-30",
+        "deliveryLocation": "湖北省武汉市XX区",
+        "paymentTerms": "货到验收合格后一次性付清",
+        "warrantyPeriod": "3年",
+        "evaluationMethod": "综合评分法",
+        "technicalRequirements": "Intel处理器；每台配2块硬盘",
+        "qualificationRequirements": "具有独立法人资格，持有有效的营业执照",
+        "fundSource": "财政资金"
+      },
+      "createdAt": "2026-07-21T09:00:00Z",
+      "updatedAt": "2026-07-21T09:00:00Z"
+    },
+    {
+      "_id": "doc2",
+      "title": "服务器采购合同",
+      "type": "contract",
+      "status": "signed",
+      "templateId": "template4",
+      "templateName": "货物采购合同模板",
+      "category": "goods",
+      "data": {
+        "purchaseProjectName": "服务器采购合同",
+        "contractAmount": "1200000",
+        "partyA": "XX科技有限公司",
+        "partyB": "XX服务器供应商",
+        "deliveryDate": "2025-11-30",
+        "warrantyPeriod": "3年",
+        "paymentTerms": "预付30%，货到验收合格后付65%，质保期满付5%"
+      },
+      "createdAt": "2026-07-21T11:15:20Z",
+      "updatedAt": "2026-07-21T11:15:20Z"
+    },
+    {
+      "_id": "doc3",
+      "title": "物业管理服务采购招标文件",
+      "type": "bid",
+      "status": "published",
+      "templateId": "template3",
+      "templateName": "服务采购模板",
+      "category": "services",
+      "data": {
+        "projectName": "物业管理服务采购",
+        "projectCode": "FW2025-008",
+        "budget": "80万元/年",
+        "ceilingPrice": "800000",
+        "bidderName": "XX大厦管理处",
+        "contactPerson": "李主任",
+        "contactPhone": "13900139000",
+        "servicePeriod": "12个月",
+        "deliveryLocation": "湖北省武汉市XX大厦",
+        "paymentTerms": "按月支付",
+        "evaluationMethod": "综合评分法",
+        "technicalRequirements": "提供24小时安保服务、保洁服务、设施维护",
+        "qualificationRequirements": "具有物业服务一级资质",
+        "fundSource": "自有资金"
+      },
+      "createdAt": "2026-07-21T16:45:55Z",
+      "updatedAt": "2026-07-21T16:45:55Z"
+    },
+    {
+      "_id": "doc4",
+      "title": "IT运维服务合同",
+      "type": "contract",
+      "status": "signed",
+      "templateId": "template6",
+      "templateName": "服务采购合同模板",
+      "category": "services",
+      "data": {
+        "purchaseProjectName": "IT运维服务合同",
+        "contractAmount": "360000",
+        "partyA": "XX企业",
+        "partyB": "XX运维公司",
+        "servicePeriod": "12个月",
+        "warrantyPeriod": "1年",
+        "paymentTerms": "按季度支付"
+      },
+      "createdAt": "2026-07-22T08:30:10Z",
+      "updatedAt": "2026-07-22T08:30:10Z"
+    },
+    {
+      "_id": "doc5",
+      "title": "办公楼建设工程招标书",
+      "type": "bid",
+      "status": "pending",
+      "templateId": "template2",
+      "templateName": "工程项目招标模板",
+      "category": "engineering",
+      "data": {
+        "projectName": "办公楼建设工程",
+        "projectCode": "GC2025-015",
+        "budget": "2000万元",
+        "ceilingPrice": "20000000",
+        "bidderName": "XX房地产开发有限公司",
+        "contactPerson": "王总工",
+        "contactPhone": "13700137000",
+        "deliveryDate": "2026-12-31",
+        "deliveryLocation": "湖北省武汉市XX开发区",
+        "paymentTerms": "按月进度支付",
+        "warrantyPeriod": "2年",
+        "evaluationMethod": "综合评分法",
+        "technicalRequirements": "框架结构，地上12层，地下2层",
+        "qualificationRequirements": "具有建筑工程施工总承包一级资质",
+        "fundSource": "企业自筹"
+      },
+      "createdAt": "2026-07-22T13:40:25Z",
+      "updatedAt": "2026-07-22T13:40:25Z"
+    }
+  ],
+  "risks": [
+    {
+      "_id": "risk1",
+      "documentId": "doc1",
+      "category": "合规红线",
+      "level": "high",
+      "title": "限定特定品牌",
+      "desc": "招标文件中指定了品牌型号",
+      "suggestion": "删除品牌限定，改为技术参数描述",
+      "resolved": false,
+      "createdAt": "2026-07-22T15:55:40Z",
+      "updatedAt": "2026-07-22T15:55:40Z"
+    },
+    {
+      "_id": "risk2",
+      "documentId": "doc1",
+      "category": "漏项检测",
+      "level": "medium",
+      "title": "缺少履约保证金条款",
+      "desc": "招标文件未提及履约保证金",
+      "suggestion": "增加履约保证金条款，比例为合同金额的5%-10%",
+      "resolved": false,
+      "createdAt": "2026-07-23T09:10:05Z",
+      "updatedAt": "2026-07-23T09:10:05Z"
+    },
+    {
+      "_id": "risk3",
+      "documentId": "doc3",
+      "category": "霸王条款",
+      "level": "high",
+      "title": "单方变更权条款",
+      "desc": "合同赋予甲方单方变更服务内容的权利",
+      "suggestion": "约定任何变更须经双方协商一致",
+      "resolved": true,
+      "createdAt": "2026-07-23T14:20:15Z",
+      "updatedAt": "2026-07-23T14:20:15Z"
+    },
+    {
+      "_id": "risk4",
+      "documentId": "doc5",
+      "category": "过期法规",
+      "level": "low",
+      "title": "引用已废止法规",
+      "desc": "引用了《合同法》相关条款",
+      "suggestion": "改为引用《民法典》合同编",
+      "resolved": false,
+      "createdAt": "2026-07-24T10:30:00Z",
+      "updatedAt": "2026-07-24T10:30:00Z"
+    }
+  ],
+  "suppliers": [
+    {
+      "_id": "sup1",
+      "name": "华为技术有限公司",
+      "category": "goods",
+      "contactPerson": "张经理",
+      "contactPhone": "400-822-9999",
+      "rating": 4.9,
+      "description": "全球领先的ICT基础设施和智能终端提供商"
+    },
+    {
+      "_id": "sup2",
+      "name": "联想集团",
+      "category": "goods",
+      "contactPerson": "李经理",
+      "contactPhone": "400-990-8888",
+      "rating": 4.8,
+      "description": "全球知名PC制造商，提供办公设备解决方案"
+    },
+    {
+      "_id": "sup3",
+      "name": "万科物业",
+      "category": "services",
+      "contactPerson": "王经理",
+      "contactPhone": "400-951-5151",
+      "rating": 4.7,
+      "description": "国内领先的物业服务提供商"
+    },
+    {
+      "_id": "sup4",
+      "name": "中建三局",
+      "category": "engineering",
+      "contactPerson": "赵总",
+      "contactPhone": "400-880-0123",
+      "rating": 4.9,
+      "description": "大型建筑施工企业，具有特级资质"
+    },
+    {
+      "_id": "sup5",
+      "name": "顺丰供应链",
+      "category": "services",
+      "contactPerson": "陈经理",
+      "contactPhone": "95338",
+      "rating": 4.6,
+      "description": "专业供应链管理与物流服务"
+    }
+  ]
+}
