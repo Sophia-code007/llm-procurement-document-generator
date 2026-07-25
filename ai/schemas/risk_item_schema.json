@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "风险检测返回数据 Schema",
+  "description": "用于校验文档风险检测接口返回的风险清单。",
+  "type": "object",
+  "required": ["riskList"],
+  "additionalProperties": false,
+  "properties": {
+    "riskList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["riskId", "level", "category", "location", "description", "currentContent", "suggestion", "regulationBasis"],
+        "additionalProperties": false,
+        "properties": {
+          "riskId": {
+            "type": "string",
+            "description": "风险唯一编号，如 R001"
+          },
+          "level": {
+            "type": "string",
+            "enum": ["high", "medium", "low"],
+            "description": "风险等级"
+          },
+          "category": {
+            "type": "string",
+            "description": "风险分类，如付款风险、验收风险、条款缺失、违约责任等"
+          },
+          "location": {
+            "type": ["string", "null"],
+            "description": "风险所在文档位置，如 第三章 投标保证金"
+          },
+          "description": {
+            "type": "string",
+            "description": "风险问题具体描述"
+          },
+          "currentContent": {
+            "type": ["string", "null"],
+            "description": "当前文档中的原文内容"
+          },
+          "suggestion": {
+            "type": "string",
+            "description": "修改建议"
+          },
+          "regulationBasis": {
+            "type": ["string", "null"],
+            "description": "法规依据，可选"
+          }
+        }
+      }
+    }
+  }
+}

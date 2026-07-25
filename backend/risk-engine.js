@@ -20,14 +20,14 @@ const REGULATIONS_DIR = path.join(__dirname, 'data', 'regulations')
 // 霸王条款关键词库
 const BUILTIN_UNFAIR_CLAUSE_PATTERNS = [
   {
-    pattern: /单方(变更|修改|调整)|有权.*?(变更|修改|调整).*?无需|可随时(变更|修改)/i,
+    pattern: /单方(变更|修改|调整)|有权(变更|修改|调整)(.*?)无需|可随时(变更|修改)/i,
     title: '单方变更权条款',
     level: 'high',
     desc: '合同赋予一方单方面变更合同内容的权利，违反《民法典》合同平等原则。',
     suggestion: '删除单方变更权条款，或约定"任何变更须经双方协商一致并以书面形式确认"。'
   },
   {
-    pattern: /单方(解除|终止)|有权.*?(解除|终止).*?无需|随时(解除|终止)/i,
+    pattern: /单方(解除|终止)|有权(解除|终止)(.*?)无需提前|随时(解除|终止)/i,
     title: '单方解除权条款',
     level: 'high',
     desc: '合同赋予一方单方面解除权，而对另一方设置严苛的解除条件，权利义务严重不对等。',
@@ -219,9 +219,9 @@ function loadExternalRegulations() {
   }
 
   // 合并不置空的分类：外部优先，外部为空则回退到内置
-  const finalUnfairClauses = [...BUILTIN_UNFAIR_CLAUSE_PATTERNS, ...unfairClauses]
-  const finalExpiredRegs = [...BUILTIN_EXPIRED_REGULATIONS, ...expiredRegs]
-  const finalRedlines = [...BUILTIN_COMPLIANCE_REDLINES, ...redlines]
+  const finalUnfairClauses = unfairClauses.length > 0 ? unfairClauses : BUILTIN_UNFAIR_CLAUSE_PATTERNS
+  const finalExpiredRegs = expiredRegs.length > 0 ? expiredRegs : BUILTIN_EXPIRED_REGULATIONS
+  const finalRedlines = redlines.length > 0 ? redlines : BUILTIN_COMPLIANCE_REDLINES
 
   cachedUnfairClauses = finalUnfairClauses
   cachedExpiredRegs = finalExpiredRegs

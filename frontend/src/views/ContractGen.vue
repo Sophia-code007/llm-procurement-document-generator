@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="app-container">
     <header class="header">
       <div class="header-logo">
@@ -252,10 +253,20 @@
         </div>
       </div>
     </div>
+=======
+  <div class="placeholder-page">
+    <el-card class="placeholder-card">
+      <el-icon :size="64" color="#cbd5e1"><Stamp /></el-icon>
+      <h2 class="placeholder-title">合同生成</h2>
+      <p class="placeholder-desc">基于已生成的招标文件，自动生成配套合同文件</p>
+      <el-tag type="info">功能开发中</el-tag>
+    </el-card>
+>>>>>>> 0d39961e4021288d01e36e43f21e91cce3ec4e54
   </div>
 </template>
 
 <script setup>
+<<<<<<< HEAD
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from '../api/axios'
@@ -711,4 +722,35 @@ onMounted(async () => {
 .msg-empty { padding: 24px 16px; text-align: center; font-size: 13px; color: #86909C; }
 .msg-panel-footer { padding: 10px 16px; text-align: center; font-size: 12px; color: #165DFF; border-top: 1px solid #E5E6EB; cursor: pointer; }
 .msg-panel-footer:hover { background: #F2F3F5; }
+=======
+</script>
+
+<style scoped>
+.placeholder-page {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-card {
+  text-align: center;
+  padding: 48px 64px;
+  border-radius: 16px;
+  min-width: 400px;
+}
+
+.placeholder-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 20px 0 8px;
+}
+
+.placeholder-desc {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+>>>>>>> 0d39961e4021288d01e36e43f21e91cce3ec4e54
 </style>
