@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const https = require('https');
 
-const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || 'sk-5ac40d547a754b5f942f5670855c182d';
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || '';
 
 async function callDeepSeek(prompt, systemPrompt) {
   return new Promise((resolve, reject) => {
